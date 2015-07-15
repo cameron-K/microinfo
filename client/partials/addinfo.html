@@ -1,0 +1,109 @@
+<div ng-controller='infoController'>
+  <h3>Hi</h3><h3 ng-bind='current_user.first_name'></h3>
+  <table>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Email
+      </th>
+    </tr>
+    <tr ng-repeat='email in emails'>
+
+      <td class='info_td'>
+
+        <div ng-hide='editEmailNameEnabled'>
+          {{email.name}}
+          <button ng-click='editEmailNameEnabled=!editEmailNameEnabled'>Edit</button>
+        </div>
+
+        <div ng-show='editEmailNameEnabled'>
+          <input type="text" ng-change='updateEmail(email)' ng-model='email.name'>
+          <button ng-click='editEmailNameEnabled=!editEmailNameEnabled'>Done</button>
+        </div>
+
+      </td>
+
+      <td class='info_td'>
+
+        <div ng-hide='editEnabled'>
+          {{email.email}}
+          <button ng-click='editEnabled=!editEnabled'>Edit</button>
+        </div>
+
+        <div ng-show='editEnabled'>
+          <input type="text" ng-change='updateEmail(email)' ng-model='email.email'>
+          <button ng-click='editEnabled=!editEnabled'>Done</button>
+        </div>
+
+      </td>
+      <td>
+        <button type="button" ng-click='deleteEmail(email)'>Delete</button>
+      </td>
+
+    </tr>
+  </table>
+  <div class='add_form'>
+    <label for="">Name</label>
+    <input type="text" value="" ng-model='new_email.name'>
+    <label for="">Email Address</label>
+    <input type="text" value="" ng-model='new_email.email'>
+    <input type="button" value="Add" ng-click='addEmail()'>
+  </div>
+
+
+  <table>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Number
+      </th>
+    </tr>
+    <tr ng-repeat='phone in phones'>
+      <td class='info_td' ng-bind='phone.name'>
+
+      </td>
+      <td class='info_td' ng-bind='phone.phone'>
+
+      </td>
+    </tr>
+  </table>
+  <div class='add_form'>
+    <label for="">Name</label>
+    <input type="text" ng-model='new_phone.name'>
+    <label for="">Phone Number</label>
+    <input type="text"  ng-model='new_phone.phone'>
+    <input type="button" value="Add" ng-click='addPhone()'>
+  </div>
+
+
+  <table>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Link
+      </th>
+    </tr>
+    <tr ng-repeat='social in socials'>
+      <td class='info_td' ng-bind='social.name'>
+
+      </td>
+      <td class='info_td' ng-bind='social.link'>
+
+      </td>
+    </tr>
+  </table>
+  <div class='add_form'>
+    <label for="">Name</label>
+    <input type="text" ng-model='new_social.name'>
+    <label for="">Profile Link</label>
+    <input type="text"  ng-model='new_social.social'>
+    <input type="button" value="Add" ng-click='addSocial()'>
+  </div>
+
+</div>

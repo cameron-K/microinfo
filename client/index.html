@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>
+    <script type="text/javascript" src='/assets/users.js'></script>
+    <script type="text/javascript" src='/assets/info.js'></script>
+    <style media="screen">
+      .add_form *{
+        display: inline-block;
+      }
+      .profile_checkboxes label{
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div ng-app='microInfo'>
+        <a href="#/profiles">Profiles</a> | <a href="#/new">Add User</a> | <a href="#/info">Edit</a> | <a href="#/login">Log In</a>
+        <div ng-view="">
+        </div>
+    </div>
+
+
+
+  </body>
+</html>
