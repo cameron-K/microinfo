@@ -2,7 +2,7 @@
       <div ng-hide='createProfileEnabled'>
         <input type="button" value="Create Profile" ng-click='enableCreateProfile()'>
 
-        <div ng-repeat='profile in profile'>
+        <div ng-repeat='profile in profiles'>
           <h4 ng-bind='profile.title'></h4>
           <table>
             <tr>

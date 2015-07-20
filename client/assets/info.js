@@ -54,7 +54,9 @@ microInfo.controller('infoController',function($scope,infoFactory){
   }
   $scope.updateNewProfile=function(type,info_object){
     var index=$scope.new_profile[type].indexOf(info_object);
-    if(index>0){
+    console.log('index '+index);
+    console.log($scope.new_profile[type][index]);
+    if(index>=0){
       $scope.new_profile[type].splice(index,1);
     }
     else{
@@ -127,10 +129,14 @@ microInfo.controller('infoController',function($scope,infoFactory){
   }
 
   $scope.createProfile=function(){
-    console.log($scope.new_profile);
     $scope.profiles.push($scope.new_profile);
+    console.log($scope.profiles);
     $scope.enableCreateProfile();
-    $scope.new_profile={};
+    $scope.new_profile={
+      emails:[],
+      phones:[],
+      socials:[]
+    };
   }
 
 
