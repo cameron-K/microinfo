@@ -1,4 +1,34 @@
-<div ng-controller='homeController'>
+<div ng-controller='userController'>
   <div><h3>Hi </h3> <h3 ng-bind='user.first_name'></h3>
+  search
+  <input type="text" ng-model=search ng-change='searchName()'>
+
+  <div >
+    <ul>
+      <li ng-repeat='user in search_results' >{{user.first_name}} {{user.last_name}}<button type="button" ng-click='beginConnectionRequest(user._id)'>Connect</button></li>
+
+    </ul>
+
+  </div>
+
+  <div ng-show='createConnectionEnabled'>
+    <select ng-model='new_connection.profile_id' ng-options='profile._id as profile.title for profile in profiles'>
+
+    </select>
+    <button type="button" ng-click='finishConnectionRequest(new_connection)'>Send Request</button>
+  </div>
+</div>
+
+<div>
+<div ng-repeat='request in requests'>
+  <h3>{{request.first_name}} {{request.last_name}}</h3>
+  <h4 ng-bind='request.title'></h4>
+  <select ng-model='connected_profile.profile_id' ng-options='profile._id as profile.title for profile in profiles'>
+
+    </select>
+  <button ng-click='acceptConnectionRequest(connected_profile)'>Connect</button>
+  <button ng-click='ignoreConnectionRequest'>Ignore</button>
+
+</div>
 
 </div>

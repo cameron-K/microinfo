@@ -1,12 +1,15 @@
 <div ng-controller='infoController'>
   <h3>Hi</h3><h3 ng-bind='current_user.first_name'></h3>
-  <table>
+  <table class='table table-striped'>
     <tr>
       <th>
         Name
       </th>
       <th>
         Email
+      </th>
+      <th>
+
       </th>
     </tr>
     <tr ng-repeat='email in emails'>
@@ -53,7 +56,7 @@
   </div>
 
 
-  <table>
+  <table class='table table-striped'>
     <tr>
       <th>
         Name
@@ -61,13 +64,40 @@
       <th>
         Number
       </th>
+      <th>
+
+      </th>
     </tr>
     <tr ng-repeat='phone in phones'>
-      <td class='info_td' ng-bind='phone.name'>
+      <td class='info_td'>
+
+        <div ng-hide='editPhoneNameEnabled'>
+          {{phone.name}}
+          <button ng-click='editPhoneNameEnabled=!editPhoneNameEnabled'>Edit</button>
+        </div>
+
+        <div ng-show='editPhoneNameEnabled'>
+          <input type="text" ng-change='updatePhone(phone)' ng-model='phone.name'>
+          <button ng-click='editPhoneNameEnabled=!editPhoneNameEnabled'>Done</button>
+        </div>
 
       </td>
-      <td class='info_td' ng-bind='phone.phone'>
 
+      <td class='info_td'>
+
+        <div ng-hide='editPhoneEnabled'>
+          {{phone.phone}}
+          <button ng-click='editPhoneEnabled=!editPhoneEnabled'>Edit</button>
+        </div>
+
+        <div ng-show='editPhoneEnabled'>
+          <input type="text" ng-change='updatePhone(phone)' ng-model='phone.phone'>
+          <button ng-click='editPhoneEnabled=!editPhoneEnabled'>Done</button>
+        </div>
+
+      </td>
+      <td>
+        <button type="button" ng-click='deletePhone(phone)'>Delete</button>
       </td>
     </tr>
   </table>
@@ -80,7 +110,7 @@
   </div>
 
 
-  <table>
+  <table class='table table-striped'>
     <tr>
       <th>
         Name
@@ -88,13 +118,40 @@
       <th>
         Link
       </th>
+      <th>
+
+      </th>
     </tr>
     <tr ng-repeat='social in socials'>
-      <td class='info_td' ng-bind='social.name'>
+      <td class='info_td'>
+
+        <div ng-hide='editSocialNameEnabled'>
+          {{social.name}}
+          <button ng-click='editSocialNameEnabled=!editSocialNameEnabled'>Edit</button>
+        </div>
+
+        <div ng-show='editSocialNameEnabled'>
+          <input type="text" ng-change='updateSocial(social)' ng-model='social.name'>
+          <button ng-click='editSocialNameEnabled=!editSocialNameEnabled'>Done</button>
+        </div>
 
       </td>
-      <td class='info_td' ng-bind='social.link'>
 
+      <td class='info_td'>
+
+        <div ng-hide='editSocialEnabled'>
+          {{social.link}}
+          <button ng-click='editSocialEnabled=!editSocialEnabled'>Edit</button>
+        </div>
+
+        <div ng-show='editSocialEnabled'>
+          <input type="text" ng-change='updateSocial(social)' ng-model='social.link'>
+          <button ng-click='editSocialEnabled=!editSocialEnabled'>Done</button>
+        </div>
+
+      </td>
+      <td>
+        <button type="button" ng-click='deleteSocial(social)'>Delete</button>
       </td>
     </tr>
   </table>

@@ -1,63 +1,67 @@
 <div ng-controller='infoController'>
       <div ng-hide='createProfileEnabled'>
         <input type="button" value="Create Profile" ng-click='enableCreateProfile()'>
+        <div class="container">
 
-        <div ng-repeat='profile in profiles'>
-          <h4 ng-bind='profile.title'></h4>
-          <table>
-            <tr>
-              <th>
-                Name
-              </th>
-              <th>
-                Email
-              </th>
-            </tr>
-            <tr ng-repeat='email in profile.emails'>
-              <td ng-bind='email.name'>
-              </td>
-              <td ng-bind='email.email'>
-              </td>
-            </tr>
-          </table>
 
-          <table>
-            <tr>
-              <th>
-                Name
-              </th>
-              <th>
-                Phone
-              </th>
-            </tr>
-            <tr ng-repeat='phone in profile.phones'>
-              <td ng-bind='phone.name'>
-              </td>
-              <td ng-bind='phone.phone'>
-              </td>
-            </tr>
-          </table>
+          <div ng-repeat='profile in profiles' class='profile'>
+            <div class="row">
 
-          <table>
-            <tr>
-              <th>
-                Name
-              </th>
-              <th>
-                Social
-              </th>
-            </tr>
-            <tr ng-repeat='social in profile.socials'>
-              <td ng-bind='social.name'>
-              </td>
-              <td ng-bind='social.link'>
-              </td>
-            </tr>
-          </table>
+
+              <h3 ng-bind='profile.title'></h3>
+              <div class="col-md-3">
+
+
+                <h4>Emails</h4>
+                <table>
+
+                  <tr ng-repeat='email in profile.emails'>
+                    <td ng-bind='email.name'>
+                    </td>
+                    <td ng-bind='email.email'>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="col-md-3">
+                <h4>Phones</h4>
+                <table>
+
+                  <tr ng-repeat='phone in profile.phones'>
+                    <td ng-bind='phone.name'>
+                    </td>
+                    <td ng-bind='phone.phone'>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="col-md-3">
+                <h4>Links</h4>
+                <table>
+
+                  <tr ng-repeat='social in profile.socials'>
+                    <td ng-bind='social.name'>
+                    </td>
+                    <td ng-bind='social.link'>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="col-md-3">
+                <button type="button" ng-click='deleteProfile(profile)'>Delete</button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
+      <!-- Creation form -->
   <div ng-show='createProfileEnabled'>
     <input type="button" value="Cancel" ng-click='enableCreateProfile()'>
+
       <h3>Create a Contact Profile</h3>
 
       <h4>Title</h4>
@@ -65,19 +69,19 @@
 
       <h4>Emails</h4>
       <div class='profile_checkboxes' ng-repeat='email in emails'>
-        <input type="checkbox" ng-model='checks[email._id]' ng-change="updateNewProfile('emails',email)">
-        <label for="">{{email.name}} : {{email.email}}</label>
+        <input type="checkbox" ng-model='email.selected'>
+        <label for="">{{email.name}} : {{email.email}} : {{email.selected}}</label>
       </div>
 
       <h4>Phones</h4>
       <div class='profile_checkboxes' ng-repeat='phone in phones'>
-        <input type="checkbox" ng-model='new_profile.phones[phone._id]'>
+        <input type="checkbox" ng-model='phone.selected'>
         <label for="">{{phone.name}} : {{phone.phone}}</label>
       </div>
 
       <h4>Socials</h4>
       <div class='profile_checkboxes' ng-repeat='social in socials'>
-        <input type="checkbox" ng-model='new_profile.socials[social._id]'>
+        <input type="checkbox" ng-model='social.selected'>
         <label for="">{{social.name}} : {{social.link}}</label>
       </div>
       <input type="button" value="Create Profile" ng-click='createProfile()'>

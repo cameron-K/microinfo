@@ -4,6 +4,8 @@ var profileSchema=new mongoose.Schema({
 
   user_id:{type:Schema.Types.ObjectId, ref:'User'},
   users_shared_with:[{type:Schema.Types.ObjectId, ref:'User'}],
+  first_name:String,
+  last_name:String,
   title:String,
   emails:[{
     name:String,
